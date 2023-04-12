@@ -58,7 +58,7 @@
 
   <div *ngFor="let clase of clases">
     <label>
-      <input type="checkbox" [formControl]="clasesControl" [(ngModel)]="clase.seleccionada">
+      <input type="checkbox" [(ngModel)]="clase.seleccionada">
       {{ clase.value }}
     </label>
   </div>

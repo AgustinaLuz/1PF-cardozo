@@ -20,25 +20,28 @@ export class AbmAlumnosComponent {
     { value: 'Opción 3', seleccionada: false }
   ];
   seleccion = '';
+
     
   alumnosForm = new FormGroup({
     name: this.nameControl,
     last_name: this.last_nameControl,
     course: this.courseControl,
-    classes: this.clasesControl,
+    clases: this.clasesControl,
     birth_date: this.birth_dateControl,
     
   });
 
   
-  constructor(private dialogRef: MatDialogRef<AbmAlumnosComponent>) {}
+  constructor(private dialogRef: MatDialogRef<AbmAlumnosComponent, any>) {}
 
   mostrarSeleccion() {
     this.seleccion = this.clases
       .filter(clase => clase.seleccionada)
       .map(clase => clase.value)
       .join(', ');
-  }
+  };
+ 
+
 
   guardar(): void {
     if (this.alumnosForm.valid) {

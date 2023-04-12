@@ -2,11 +2,18 @@
 <mat-drawer-container class="example-container" autosize>
   <!-- sidebar -->
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+
+    <span> AppUsers</span><br>
+    <button mat-button routerLink="">Dashboard</button><br>
+    <button mat-button routerLink="">Usuarios</button><br>
+    
+    <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon>Log out</mat-icon>
+      </button>
   </mat-drawer>
   <!-- wrapper -->
   <div class="example-sidenav-content">

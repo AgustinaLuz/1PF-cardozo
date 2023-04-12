@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AbmAlumnosComponent } from './abm-alumnos/abm-alumnos.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
 
 export interface Estudiante {
   id: number;
@@ -48,7 +49,17 @@ export class TablesComponent {
 
   dataSource = new MatTableDataSource(this.estudiantes)
 
-  displayedColumns: string[] = ['id', 'full_name', 'course', 'clases' , 'birth_date'];
+  displayedColumns: string[] = ['id', 'full_name', 'course', 'clases' , 'birth_date', 'acciones'];
+
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+  
+  eliminarUsuario(index: number){
+    this.estudiantes.splice(index, 1);
+  }
 
   applyFilters(ev: Event): void{
     const inputValue = (ev.target as HTMLInputElement)?.value;

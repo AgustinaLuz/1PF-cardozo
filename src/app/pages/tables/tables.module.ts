@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { CheckboxModule } from 'primeng/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CheckboxModule } from 'primeng/checkbox';
     MatDatepickerModule,
     MatPseudoCheckboxModule,
     CheckboxModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule,
+    MatSortModule 
     
   ],
   exports: [
