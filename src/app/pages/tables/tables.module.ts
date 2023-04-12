@@ -7,13 +7,14 @@ import { MatInputModule } from '@angular/material/input';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AbmAlumnosComponent } from './abm-alumnos/abm-alumnos.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSelectModule } from '@angular/material/select'
-
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,10 @@ import { MatSelectModule } from '@angular/material/select'
     SharedModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatPseudoCheckboxModule,
+    CheckboxModule,
+    FormsModule
     
   ],
   exports: [

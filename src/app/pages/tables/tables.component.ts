@@ -8,6 +8,7 @@ export interface Estudiante {
   name: string;
   last_name: string;
   course: string;
+  clases: string;
   birth_date: Date;
 }
 
@@ -24,6 +25,7 @@ export class TablesComponent {
     name: 'Aida',
     last_name: 'Ovejero',
     course: '4to',
+    clases: 'Math',
     birth_date: new Date()
   },
   {
@@ -31,6 +33,7 @@ export class TablesComponent {
     name: 'Julieta',
     last_name: 'Cardozo',
     course: '4to',
+    clases: 'Math',
     birth_date: new Date()
   },
   {
@@ -38,13 +41,14 @@ export class TablesComponent {
     name: 'Joaquin',
     last_name: 'Fiora',
     course: '6to',
+    clases: 'Math',
     birth_date: new Date()
   },
 ];
 
   dataSource = new MatTableDataSource(this.estudiantes)
 
-  displayedColumns: string[] = ['id', 'full_name', 'course', 'birth_date'];
+  displayedColumns: string[] = ['id', 'full_name', 'course', 'clases' , 'birth_date'];
 
   applyFilters(ev: Event): void{
     const inputValue = (ev.target as HTMLInputElement)?.value;
@@ -52,8 +56,19 @@ export class TablesComponent {
   }
   
   constructor(private matDialog: MatDialog) {}
-
-
+  
+  clases = [
+    { value: 'Opción 1', seleccionada: false },
+    { value: 'Opción 2', seleccionada: false },
+    { value: 'Opción 3', seleccionada: false }
+  ];
+  seleccion = '';
+  mostrarSeleccion() {
+    this.seleccion = this.clases
+      .filter(clase => clase.seleccionada)
+      .map(clase => clase.value)
+      .join(', ');
+  }
   abrirABMAlumnos(): void {
     const dialog = this.matDialog.open(AbmAlumnosComponent)
     dialog.afterClosed().subscribe((valor) => {
@@ -62,7 +77,6 @@ export class TablesComponent {
           ...this.dataSource.data,
           {
             ...valor,
-            birth_date: new Date(),
             id: this.dataSource.data.length + 1,
           }
         ];

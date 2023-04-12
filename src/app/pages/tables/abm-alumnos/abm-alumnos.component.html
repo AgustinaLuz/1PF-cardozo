@@ -34,7 +34,7 @@
     <!-- CONTROL DE curso -->
 
     <div class="col-12 field">
-      <mat-form-field appearance="fill">
+      <mat-form-field class="w-full">
         <mat-label>Select</mat-label>
             <input
           [formControl]="courseControl"
@@ -50,6 +50,24 @@
         
     </div>
 
+ <!-- CONTROL DE clases -->
+
+ <div class="col-12 field">
+  
+  <h2>Selecciona tus clases:</h2>
+
+  <div *ngFor="let clase of clases">
+    <label>
+      <input type="checkbox" [formControl]="clasesControl" [(ngModel)]="clase.seleccionada">
+      {{ clase.value }}
+    </label>
+  </div>
+  
+  <button (click)="mostrarSeleccion()">Mostrar selección</button>
+  
+  <p>Seleccionaste: {{ seleccion }}</p>
+ 
+  </div>
 
  <!-- CONTROL DE fecha -->
 
