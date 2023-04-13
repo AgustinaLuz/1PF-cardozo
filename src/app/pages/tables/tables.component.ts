@@ -9,7 +9,7 @@ export interface Estudiante {
   name: string;
   last_name: string;
   course: string;
-  clases: string;
+  clase: string;
   birth_date: Date;
 }
 
@@ -25,33 +25,42 @@ export class TablesComponent {
     id: 1,
     name: 'Aida',
     last_name: 'Ovejero',
-    course: '4to',
-    clases: 'Math',
+    course: '2nd Year',
+    clase: 'Math',
     birth_date: new Date()
   },
   {
     id: 2,
     name: 'Julieta',
     last_name: 'Cardozo',
-    course: '4to',
-    clases: 'Math',
+    course: '2nd Year',
+    clase: 'Chemistry',
     birth_date: new Date()
   },
   {
     id: 3,
     name: 'Joaquin',
     last_name: 'Fiora',
-    course: '6to',
-    clases: 'Math',
+    course: '5th Year',
+    clase: 'Psysics',
+    birth_date: new Date()
+  },
+  {
+    id: 4,
+    name: 'Julio',
+    last_name: 'Fiora',
+    course: '5th Year',
+    clase: 'Computer Science',
     birth_date: new Date()
   },
 ];
 
   dataSource = new MatTableDataSource(this.estudiantes)
 
-  displayedColumns: string[] = ['id', 'full_name', 'course', 'clases' , 'birth_date', 'acciones'];
+  displayedColumns: string[] = ['id', 'full_name', 'course', 'clase' , 'birth_date', 'acciones'];
 
   @ViewChild(MatSort) sort!: MatSort;
+  
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
@@ -59,6 +68,7 @@ export class TablesComponent {
   
   eliminarUsuario(index: number){
     this.estudiantes.splice(index, 1);
+    this.dataSource = new MatTableDataSource(this.estudiantes);
   }
 
   applyFilters(ev: Event): void{
@@ -68,18 +78,17 @@ export class TablesComponent {
   
   constructor(private matDialog: MatDialog) {}
   
-  clases = [
-    { value: 'Opción 1', seleccionada: false },
-    { value: 'Opción 2', seleccionada: false },
-    { value: 'Opción 3', seleccionada: false }
-  ];
-  seleccion = '';
-  mostrarSeleccion() {
-    this.seleccion = this.clases
-      .filter(clase => clase.seleccionada)
-      .map(clase => clase.value)
-      .join(', ');
+
+
+  modificarUsuario(index: number) {
+    const user = this.estudiantes[index];
+    const dialog = this.matDialog.open(AbmAlumnosComponent, { data: user })
+    dialog.afterClosed().subscribe((valor) => {
+      this.estudiantes[index] = valor;
+      this.dataSource = new MatTableDataSource(this.estudiantes);
+    })
   }
+  
   abrirABMAlumnos(): void {
     const dialog = this.matDialog.open(AbmAlumnosComponent)
     dialog.afterClosed().subscribe((valor) => {
@@ -87,7 +96,7 @@ export class TablesComponent {
         this.dataSource.data = [
           ...this.dataSource.data,
           {
-            ...valor,
+            ...valor, 
             id: this.dataSource.data.length + 1,
           }
         ];

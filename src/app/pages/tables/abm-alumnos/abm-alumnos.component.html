@@ -42,33 +42,45 @@
           matInput
             >
         <mat-select>
-          <mat-option value="one">4to</mat-option>
-          <mat-option value="two">5to</mat-option>
+          <mat-option value="one">1st Year</mat-option>
+          <mat-option value="two">2nd Year</mat-option>
+          <mat-option value="three">3rd Year</mat-option>
+          <mat-option value="four">4th Year</mat-option>
+          <mat-option value="five">5th Year</mat-option>
         </mat-select>
         <mat-error *ngFor="let error of courseControl.errors | keyvalue">{{ error | controlErrorMessages }}</mat-error>
       </mat-form-field>
-        
+
     </div>
 
- <!-- CONTROL DE clases -->
+ <!-- CONTROL DE clase -->
 
  <div class="col-12 field">
-  
-  <h2>Selecciona tus clases:</h2>
+  <mat-form-field class="w-full">
+    <label>Clase</label>
+    <mat-label>Select</mat-label>
+        <input
+      [formControl]="claseControl"
+      type="text"
+      matInput
+        >
+    <mat-select>
+      <mat-option value="one">Computer Science</mat-option>
+      <mat-option value="two">Chemistry</mat-option>
+      <mat-option value="three">Physics</mat-option>
+      <mat-option value="four">Math</mat-option>
+      <mat-option value="five">Psychology</mat-option>
+      <mat-option value="six">Literature</mat-option>
+      <mat-option value="seven">Design</mat-option>
+    </mat-select>
+    <mat-error *ngFor="let error of claseControl.errors | keyvalue">{{ error | controlErrorMessages }}</mat-error>
+  </mat-form-field>
 
-  <div *ngFor="let clase of clases">
-    <label>
-      <input type="checkbox" [(ngModel)]="clase.seleccionada">
-      {{ clase.value }}
-    </label>
-  </div>
-  
-  <button (click)="mostrarSeleccion()">Mostrar selección</button>
-  
-  <p>Seleccionaste: {{ seleccion }}</p>
- 
-  </div>
+</div>
 
+
+
+  
  <!-- CONTROL DE fecha -->
 
  <div class="col-12 field">

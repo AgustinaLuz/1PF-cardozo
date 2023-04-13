@@ -1,47 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Estudiante } from '../tables.component';
 
 @Component({
   selector: 'app-abm-alumnos',
   templateUrl: './abm-alumnos.component.html',
   styleUrls: ['./abm-alumnos.component.scss']
 })
-export class AbmAlumnosComponent {
+export class AbmAlumnosComponent implements OnInit {
 
   nameControl = new FormControl('', [Validators.required]);
   last_nameControl = new FormControl('', [Validators.required]);
   courseControl = new FormControl('');
-  clasesControl = new FormControl('');
+  claseControl = new FormControl('');
   birth_dateControl = new FormControl('', [Validators.required]);
-  clases = [
-    { value: 'Opción 1', seleccionada: false },
-    { value: 'Opción 2', seleccionada: false },
-    { value: 'Opción 3', seleccionada: false }
-  ];
-  seleccion = '';
 
-    
-  alumnosForm = new FormGroup({
+  alumnosForm = new FormGroup<any>({
     name: this.nameControl,
     last_name: this.last_nameControl,
     course: this.courseControl,
-    clases: this.clasesControl,
-    birth_date: this.birth_dateControl,
-    
+    clase: this.claseControl,
+    birth_date: this.birth_dateControl
   });
 
-  
-  constructor(private dialogRef: MatDialogRef<AbmAlumnosComponent, any>) {}
 
-  mostrarSeleccion() {
-    this.seleccion = this.clases
-      .filter(clase => clase.seleccionada)
-      .map(clase => clase.value)
-      .join(', ');
-  };
- 
-
+  constructor(private dialogRef: MatDialogRef<AbmAlumnosComponent>, @Inject(MAT_DIALOG_DATA) public data: Estudiante) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   guardar(): void {
     if (this.alumnosForm.valid) {
