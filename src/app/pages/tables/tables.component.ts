@@ -8,8 +8,6 @@ export interface Estudiante {
   id: number;
   name: string;
   last_name: string;
-  course: string;
-  clase: string;
   birth_date: Date;
 }
 
@@ -25,39 +23,31 @@ export class TablesComponent {
     id: 1,
     name: 'Aida',
     last_name: 'Ovejero',
-    course: '2nd Year',
-    clase: 'Math',
     birth_date: new Date()
   },
   {
     id: 2,
     name: 'Julieta',
     last_name: 'Cardozo',
-    course: '2nd Year',
-    clase: 'Chemistry',
     birth_date: new Date()
   },
   {
     id: 3,
     name: 'Joaquin',
     last_name: 'Fiora',
-    course: '5th Year',
-    clase: 'Psysics',
     birth_date: new Date()
   },
   {
     id: 4,
     name: 'Julio',
     last_name: 'Fiora',
-    course: '5th Year',
-    clase: 'Computer Science',
     birth_date: new Date()
   },
 ];
 
   dataSource = new MatTableDataSource(this.estudiantes)
 
-  displayedColumns: string[] = ['id', 'full_name', 'course', 'clase' , 'birth_date', 'acciones'];
+  displayedColumns: string[] = ['id', 'full_name', 'birth_date', 'acciones'];
 
   @ViewChild(MatSort) sort!: MatSort;
   

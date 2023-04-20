@@ -17,6 +17,7 @@ import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
+import { ObservablesModule } from '../observables/observables.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatSortModule} from '@angular/material/sort';
     CheckboxModule,
     FormsModule,
     MatTooltipModule,
-    MatSortModule 
+    MatSortModule,
+    ObservablesModule, 
     
   ],
   exports: [

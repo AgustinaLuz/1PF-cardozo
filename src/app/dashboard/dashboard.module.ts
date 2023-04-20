@@ -11,6 +11,7 @@ import { FormulariosModule } from '../pages/formularios/formularios.module';
 import { DialoguesModule } from '../pages/dialogues/dialogues.module';
 import { TablesModule } from '../pages/tables/tables.module';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { ObservablesModule } from '../pages/observables/observables.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
     FormulariosModule,
     DialoguesModule,
     TablesModule,
-    DirectivesModule
+    DirectivesModule,
+    ObservablesModule,
   ],
   exports: [
     DashboardComponent
